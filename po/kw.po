@@ -1,0 +1,387 @@
+# Cornish translation for glib-networking.
+# Copyright (C) 2026 glib-networking's COPYRIGHT HOLDER
+# This file is distributed under the same license as the glib-networking package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Flynn Peck <cirilla@tuta.io>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: glib-networking master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/glib-networking/issues\n"
+"POT-Creation-Date: 2025-10-01 10:55+0000\n"
+"PO-Revision-Date: 2026-01-27 15:54+0000\n"
+"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+"Language-Team: kw\n"
+"Language: kw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/glib-networking/\n"
+"X-DL-Lang: kw\n"
+"X-DL-Module: glib-networking\n"
+"X-DL-Branch: master\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#: proxy/libproxy/glibproxyresolver.c:165
+msgid "Proxy resolver internal error."
+msgstr "Error pervedhek yn digelmer proksy."
+
+#: tls/base/gtlsconnection-base.c:616 tls/base/gtlsinputstream.c:78
+#: tls/base/gtlsinputstream.c:141 tls/base/gtlsoutputstream.c:78
+#: tls/base/gtlsoutputstream.c:143
+msgid "Connection is closed"
+msgstr "Junyans yw degeys"
+
+#. Cannot perform a blocking operation during a handshake on the
+#. * same thread that triggered the handshake. The only way this can
+#. * occur is if the application is doing something weird in its
+#. * accept-certificate callback. Allowing a blocking op would stall
+#. * the handshake (forever, if there's no timeout). Even a close
+#. * op would deadlock here.
+#.
+#: tls/base/gtlsconnection-base.c:690
+msgid "Cannot perform blocking operation during TLS handshake"
+msgstr "Na yllir gwruthyl oberyans lettys dres shackyans leuv TLS"
+
+#: tls/base/gtlsconnection-base.c:755 tls/base/gtlsconnection-base.c:1303
+#: tls/openssl/gtlsconnection-openssl.c:373
+msgid "Socket I/O timed out"
+msgstr "Kraw Y/E yn termyn yn-mes"
+
+#: tls/base/gtlsconnection-base.c:929
+msgid "Server required TLS certificate"
+msgstr "Servell rekwirys testskrif TLS"
+
+#: tls/base/gtlsconnection-base.c:1516
+#, c-format
+msgid "Handshake is not finished, no channel binding information yet"
+msgstr "Shackyans leuv andeu, kedhlow chanel vyth hwath"
+
+#: tls/base/gtlsconnection-base.c:1595
+msgid "Peer does not support safe renegotiation"
+msgstr "Koweth na skoodhya dasnegysyans saw"
+
+#: tls/base/gtlsconnection-base.c:1743 tls/gnutls/gtlsconnection-gnutls.c:490
+#: tls/openssl/gtlsconnection-openssl.c:209
+#: tls/openssl/gtlsconnection-openssl.c:852
+msgid "Unacceptable TLS certificate"
+msgstr "Testskrif TLS ankemeradow"
+
+#: tls/base/gtlsconnection-base.c:2215
+#, c-format
+msgid "Receive flags are not supported"
+msgstr "Baneryow degemeres anskoodhys"
+
+#: tls/base/gtlsconnection-base.c:2362
+#, c-format
+msgid "Send flags are not supported"
+msgstr "Baneryow danvon anskoodhys"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:297
+#: tls/openssl/gtlscertificate-openssl.c:318
+#, c-format
+msgid "Failed to import PKCS #12: %s"
+msgstr "Y fyllis ynperthi PKCS #12: %s"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:520
+#: tls/openssl/gtlscertificate-openssl.c:537
+#, c-format
+msgid "Could not parse DER certificate: %s"
+msgstr "Na yllir redya testskrif DER: %s"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:541
+#: tls/openssl/gtlscertificate-openssl.c:561
+#, c-format
+msgid "Could not parse PEM certificate: %s"
+msgstr "Na yllir redya testskrif PEM: %s"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:564
+#: tls/openssl/gtlscertificate-openssl.c:585
+#, c-format
+msgid "Could not parse DER private key: %s"
+msgstr "Na yllir redya alhwedh privedh DER: %s"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:587
+#: tls/openssl/gtlscertificate-openssl.c:609
+#, c-format
+msgid "Could not parse PEM private key: %s"
+msgstr "Na yllir redya alhwedh privedh PEM: %s"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:613
+#, c-format
+msgid "Could not import PKCS #11 certificate URI: %s"
+msgstr "Na yllir ynperthi URI testskrif PKCS #11: %s"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:657
+#: tls/openssl/gtlscertificate-openssl.c:647
+msgid "No certificate data provided"
+msgstr "Data testskrif provys vyth"
+
+#: tls/gnutls/gtlscertificate-gnutls.c:981
+#: tls/gnutls/gtlsconnection-gnutls.c:1055
+#, c-format
+msgid "Cannot verify peer identity of unexpected type %s"
+msgstr "Na yllir gwirhe honanieth a eghen angwaytys %s"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:213
+#: tls/gnutls/gtlsconnection-gnutls.c:223
+msgid "Could not create TLS connection:"
+msgstr "Na yllir gul junya TLS:"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:243
+#: tls/openssl/gtlsclientconnection-openssl.c:512
+#: tls/openssl/gtlsserverconnection-openssl.c:455
+#, c-format
+msgid "Could not create TLS connection: %s"
+msgstr "Na yllir gul junyans TLS: %s"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:434
+#: tls/gnutls/gtlsconnection-gnutls.c:445
+#: tls/gnutls/gtlsconnection-gnutls.c:459
+#: tls/openssl/gtlsconnection-openssl.c:176
+#, c-format
+msgid "Peer failed to perform TLS handshake: %s"
+msgstr "Koweth fyllis gwruthyl shackyans leuv TLS: %s"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:467
+#: tls/openssl/gtlsconnection-openssl.c:246
+msgid "TLS connection closed unexpectedly"
+msgstr "Junyans TLS degeys angwaytys"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:482
+#: tls/openssl/gtlsconnection-openssl.c:201
+msgid "TLS connection peer did not send a certificate"
+msgstr "Koweth junyans TLS na danvon unn testskrif"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:498
+#, c-format
+msgid "Peer sent fatal TLS alert: %s"
+msgstr "Koweth danvenys gwarnyans TLS marwel: %s"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:508
+msgid "Protocol version downgrade attack detected"
+msgstr "Omsettyans versyon protokol helerghys"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:517
+#, c-format
+msgid "Message is too large for DTLS connection; maximum is %u byte"
+msgid_plural "Message is too large for DTLS connection; maximum is %u bytes"
+msgstr[0] "Messach yw re bras rag junyans DTLS; mohya yw %u bayt"
+msgstr[1] "Messach yw re bras rag junyans DTLS; mohya yw %u baytys"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:526
+msgid "The operation timed out"
+msgstr "An oberyans yn termyn yn-mes"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:878
+#, c-format
+msgid "Error performing TLS handshake: %s"
+msgstr "Error dres ow gwruthyl shackyans leuv TLS: %s"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:981
+#: tls/openssl/gtlsconnection-openssl.c:630
+msgid "Error performing TLS handshake"
+msgstr "Error dres ow gwruthyl shackyans levu TLS"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1154
+#, c-format
+msgid ""
+"Empty channel binding data indicates a bug in the TLS library implementation"
+msgstr "Data kolm chanel gwag sinya unn kudyn gans an gweythresans lyverva TLS"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1172
+#, c-format
+msgid "Channel binding type is not implemented in the TLS library"
+msgstr "Eghen kolm chanel na kowlwulys y'n lyverva TLS"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1176
+#, c-format
+msgid "Channel binding data is not yet available"
+msgstr "Data kolm chanel na kavadow hwath"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1228
+#: tls/openssl/gtlsconnection-openssl.c:827
+#, c-format
+msgid "Requested channel binding type is not implemented"
+msgstr "Eghen kolm chanel pejys na kowlwulys"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1249
+#: tls/gnutls/gtlsconnection-gnutls.c:1309
+#: tls/openssl/gtlsconnection-openssl.c:845
+#: tls/openssl/gtlsconnection-openssl.c:941
+msgid "Error reading data from TLS socket"
+msgstr "Error dres ow redya data rag kraw TLS"
+
+#. flags
+#: tls/gnutls/gtlsconnection-gnutls.c:1331
+#: tls/gnutls/gtlsconnection-gnutls.c:1394
+#: tls/openssl/gtlsconnection-openssl.c:1020
+msgid "Error writing data to TLS socket"
+msgstr "Error dres ow skrifa data rag kraw TLS"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1364
+#, c-format
+msgid "Message of size %lu byte is too large for DTLS connection"
+msgid_plural "Message of size %lu bytes is too large for DTLS connection"
+msgstr[0] "Messach a braster %lu bayt yw re bras rag junyans DTLS"
+msgstr[1] "Messach a braster %lu baytys yw re bras rag junyans DTLS"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1366
+#, c-format
+msgid "(maximum is %u byte)"
+msgid_plural "(maximum is %u bytes)"
+msgstr[0] "(moyha yw %u bayt)"
+msgstr[1] "(moyha yw %u baytys)"
+
+#: tls/gnutls/gtlsconnection-gnutls.c:1413
+#, c-format
+msgid "Error performing TLS close: %s"
+msgstr "Error dres gwruthyl degeans TLS: %s"
+
+#: tls/gnutls/gtlsdatabase-gnutls.c:92
+#, c-format
+msgid "Failed to allocate credentials: %s"
+msgstr "Y fyllis kevranna manylyon: %s"
+
+#: tls/gnutls/gtlsdatabase-gnutls.c:594
+msgid ""
+"Failed to load system trust store: GnuTLS was not configured with a system "
+"trust"
+msgstr ""
+"Y fyllis karga gwithva system fydhyans: GnuTLS yw anselys gans unn fydhyans "
+"system"
+
+#: tls/gnutls/gtlsdatabase-gnutls.c:599 tls/openssl/gtlsdatabase-openssl.c:381
+#, c-format
+msgid "Failed to load system trust store: %s"
+msgstr "Y fyllis karga gwithva fydhyans system: %s"
+
+#: tls/gnutls/gtlsdatabase-gnutls.c:605
+#, c-format
+msgid ""
+"System trust contains zero trusted certificates; please investigate your "
+"GnuTLS configuration"
+msgstr ""
+"Fydhyans system kontaynya mann testskrifow fydhys; mar pleg hwithra dha "
+"selyans GnuTLS"
+
+#: tls/gnutls/gtlsdatabase-gnutls.c:621
+#, c-format
+msgid "Failed to initialize trust list: %s"
+msgstr "Y fyllis dalleth rol fydhyans: %s"
+
+#: tls/gnutls/gtlsfiledatabase-gnutls.c:153
+#: tls/openssl/gtlsfiledatabase-openssl.c:456
+#, c-format
+msgid "Failed to populate trust list from %s: %s"
+msgstr "Y fyllis pobla rol fydhyans dhyworth %s: %s"
+
+#: tls/gnutls/gtlsserverconnection-gnutls.c:120
+#: tls/openssl/gtlsserverconnection-openssl.c:172
+msgid "Certificate has no private key"
+msgstr "Testskrif kavos alhwedh privedh vyth"
+
+#: tls/openssl/gtlsclientconnection-openssl.c:340
+#: tls/openssl/gtlsserverconnection-openssl.c:299
+#, c-format
+msgid "Could not set TLS cipher list: %s"
+msgstr "Na yllir rol cyfer TLS: %s"
+
+#: tls/openssl/gtlsclientconnection-openssl.c:368
+#: tls/openssl/gtlsserverconnection-openssl.c:327
+#, c-format
+msgid "Could not set MAX protocol to %d: %s"
+msgstr "Na yllir protokol MAX dhe %d: %s"
+
+#: tls/openssl/gtlsclientconnection-openssl.c:457
+#: tls/openssl/gtlsserverconnection-openssl.c:390
+#, c-format
+msgid "Could not create TLS context: %s"
+msgstr "Na yllir gul kettesten TLS: %s"
+
+#: tls/openssl/gtlsconnection-openssl.c:217
+msgid "Unacceptable TLS certificate authority"
+msgstr "Awtorita testskrif TLS ankemeradow"
+
+#: tls/openssl/gtlsconnection-openssl.c:225
+msgid "Digest too big for RSA key"
+msgstr "Dijest re bras rag alhwedh RSA"
+
+#: tls/openssl/gtlsconnection-openssl.c:234
+msgid "Secure renegotiation is disabled"
+msgstr "Dasnegysyans saw yw marow"
+
+#: tls/openssl/gtlsconnection-openssl.c:268
+#, c-format
+msgid "%s: The connection is broken"
+msgstr "%s: An junyans yw terrys"
+
+#: tls/openssl/gtlsconnection-openssl.c:676
+msgid "The request is invalid."
+msgstr "An govyn yw anewn."
+
+#: tls/openssl/gtlsconnection-openssl.c:699
+msgid "Channel binding data tls-unique is not available"
+msgstr "Data kolm chanel tls-unique ankavadow"
+
+#: tls/openssl/gtlsconnection-openssl.c:722
+msgid "X.509 Certificate is not available on the connection"
+msgstr "Testskrif X.509 na kavadow war'n junyans"
+
+#: tls/openssl/gtlsconnection-openssl.c:731
+msgid "Unable to obtain certificate signature algorithm"
+msgstr "Anabel kavos method sinans testskrif"
+
+#: tls/openssl/gtlsconnection-openssl.c:751
+msgid ""
+"Current X.509 certificate uses unknown or unsupported signature algorithm"
+msgstr "Testskrif X.509 a-lemmyn devnydhya method sinans ankoth po anskoodhys"
+
+#: tls/openssl/gtlsconnection-openssl.c:769
+msgid "Failed to generate X.509 certificate digest"
+msgstr "Y fyllis dinythi dijest testskrif X.509"
+
+#: tls/openssl/gtlsconnection-openssl.c:800
+msgid "TLS Connection does not support TLS-Exporter feature"
+msgstr "Junyans TLS na skoodhya nas TLS-Exporter"
+
+#: tls/openssl/gtlsconnection-openssl.c:803
+msgid "Unexpected error while exporting keying data"
+msgstr "Error angwaytys dres owth esperthi data alwedhow"
+
+#: tls/openssl/gtlsconnection-openssl.c:1081
+msgid "Error performing TLS close"
+msgstr "Error dres gwruthyl degeans TLS"
+
+#: tls/openssl/gtlsdatabase-openssl.c:174
+msgid "Could not get trust settings for certificate"
+msgstr "Na yllir kerghes settyansow fydhyans rag testskrif"
+
+#: tls/openssl/gtlsdatabase-openssl.c:261
+msgid "Could not retrieve certificates"
+msgstr "Na yllir kerghes testskrifow"
+
+#: tls/openssl/gtlsdatabase-openssl.c:358
+msgid "Could not get root certificate store"
+msgstr "Na yllir kavos gwithva testskrifow gwreydhen"
+
+#: tls/openssl/gtlsdatabase-openssl.c:365
+msgid "Could not get CA certificate store"
+msgstr "Na yllir kavos gwitha testkrifow CA"
+
+#: tls/openssl/gtlsdatabase-openssl.c:430
+msgid "Could not create CA store"
+msgstr "Na yllir gul gwithva CA"
+
+#: tls/openssl/gtlsserverconnection-openssl.c:184
+#, c-format
+msgid "There is a problem with the certificate: %s"
+msgstr "Yma hager vargen gans an testskrif: %s"
+
+#: tls/openssl/gtlsserverconnection-openssl.c:193
+#, c-format
+msgid "There is a problem with the certificate private key: %s"
+msgstr "Yma ynn kudyn gans an alwedh privedh testskrif: %s"
