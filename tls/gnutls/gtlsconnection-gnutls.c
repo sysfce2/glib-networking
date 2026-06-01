@@ -169,6 +169,7 @@ update_credentials_cb (GObject    *gobject,
   if (ret != 0)
     {
       g_warning ("Failed to update credentials: %s", gnutls_strerror (ret));
+      g_gnutls_certificate_credentials_unref (credentials);
       return;
     }
 
