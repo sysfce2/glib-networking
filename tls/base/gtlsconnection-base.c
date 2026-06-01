@@ -2285,7 +2285,7 @@ g_tls_connection_base_write_message (GTlsConnectionBase  *tls,
                  timeout, cancellable, error))
     return -1;
 
-  g_assert (G_TLS_CONNECTION_BASE_GET_CLASS (tls)->read_message_fn);
+  g_assert (G_TLS_CONNECTION_BASE_GET_CLASS (tls)->write_message_fn);
   status = G_TLS_CONNECTION_BASE_GET_CLASS (tls)->
     write_message_fn (tls, vectors, num_vectors, timeout, &nwrote, cancellable, error);
 
