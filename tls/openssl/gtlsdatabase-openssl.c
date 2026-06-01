@@ -341,7 +341,10 @@ add_certs_from_store (const gunichar2 *source_cert_store_name,
 
       x = d2i_X509 (NULL, &pdata, cert_context->cbCertEncoded);
       if (x)
-        X509_STORE_add_cert (store, x);
+        {
+          X509_STORE_add_cert (store, x);
+          X509_free (x);
+        }
     }
 
   CertCloseStore (store_handle, 0);
