@@ -131,14 +131,6 @@ end_openssl_io (GTlsConnectionOpenssl  *openssl,
 
   g_assert (status == G_TLS_CONNECTION_BASE_ERROR);
 
-  /* This case is documented that it may happen and that is perfectly fine */
-  if (err_code == SSL_ERROR_SYSCALL &&
-      (priv->shutting_down && (!my_error || g_error_matches (my_error, G_IO_ERROR, G_IO_ERROR_BROKEN_PIPE))))
-    {
-      status = G_TLS_CONNECTION_BASE_OK;
-      goto out;
-    }
-
   /* Confusing: err_code is the result of SSL_get_error(), whereas err is the
    * result of ERR_get_error(). They are different!
    */
@@ -223,27 +215,36 @@ end_openssl_io (GTlsConnectionOpenssl  *openssl,
     }
 #endif
 
-  if (my_error)
-    g_propagate_error (error, g_steal_pointer (&my_error));
-
-  if (ret == 0 && err == 0 && err_lib == 0 && err_code == SSL_ERROR_SYSCALL
-      && (direction == G_IO_IN || direction == G_IO_OUT))
+  if (err_code == SSL_ERROR_SYSCALL)
     {
+      /* This case is documented that it may happen and that is perfectly fine */
+      if (priv->shutting_down && (!my_error || g_error_matches (my_error, G_IO_ERROR, G_IO_ERROR_BROKEN_PIPE)))
+        {
+          status = G_TLS_CONNECTION_BASE_OK;
+          goto out;
+        }
+
       /* SSL_ERROR_SYSCALL usually means we have no bloody idea what has happened
        * but when ret for read or write is 0 and all others error codes as well
        * - this is normally Early EOF condition
        */
-      if (!g_tls_connection_get_require_close_notify (G_TLS_CONNECTION (openssl)))
+      if (ret == 0 && err == 0 && err_lib == 0 && (direction == G_IO_IN || direction == G_IO_OUT))
         {
-          status = G_TLS_CONNECTION_BASE_OK;
-          g_clear_error (error);
-          goto out;
-        }
+          if (!g_tls_connection_get_require_close_notify (G_TLS_CONNECTION (openssl)))
+            {
+              status = G_TLS_CONNECTION_BASE_OK;
+              goto out;
+            }
 
-      if (error && !*error)
-        *error = g_error_new (G_TLS_ERROR, G_TLS_ERROR_EOF, _("%s: The connection is broken"), gettext (err_prefix));
+          if (error && !my_error)
+            my_error = g_error_new (G_TLS_ERROR, G_TLS_ERROR_EOF, _("%s: The connection is broken"), gettext (err_prefix));
+        }
     }
-  else if (error && !*error)
+
+  if (my_error)
+    g_propagate_error (error, g_steal_pointer (&my_error));
+
+ if (error && !*error)
     *error = g_error_new (G_TLS_ERROR, G_TLS_ERROR_MISC, "%s: %s", gettext (err_prefix), ERR_reason_error_string (err));
 
 out:
