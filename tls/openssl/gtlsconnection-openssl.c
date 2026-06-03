@@ -142,6 +142,9 @@ end_openssl_io (GTlsConnectionOpenssl  *openssl,
       goto out;
     }
 
+  /* Confusing: err_code is the result of SSL_get_error(), whereas err is the
+   * result of ERR_get_error(). They are different!
+   */
   err = ERR_get_error ();
   err_lib = ERR_GET_LIB (err);
   reason = ERR_GET_REASON (err);
@@ -293,8 +296,10 @@ perform_openssl_io (GTlsConnectionOpenssl  *openssl,
         DTLSv1_handle_timeout (ssl);
 
       /* Fragile: the perform_func must call no more than one OpenSSL function,
-       * or the OpenSSL error queue could be modified more than once before
-       * end_openssl_io(), breaking SSL_get_error().
+       * or the OpenSSL error queue could be modified more than once, breaking
+       * SSL_get_error(). From SSL_GET_ERROR(3ossl): "The current thread's error
+       * queue must be empty before the TLS/SSL I/O operation is attempted, or
+       * SSL_get_error() will not work reliably."
        */
       ERR_clear_error ();
       ret = perform_func (ssl, perform_data);
