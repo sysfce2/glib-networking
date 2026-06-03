@@ -91,22 +91,18 @@ static GTlsConnectionBaseStatus
 end_openssl_io (GTlsConnectionOpenssl  *openssl,
                 GIOCondition            direction,
                 int                     ret,
+                int                     err_code,
                 gboolean                blocking,
                 GError                **error,
                 const char             *err_prefix)
 {
   GTlsConnectionBase *tls = G_TLS_CONNECTION_BASE (openssl);
   GTlsConnectionOpensslPrivate *priv;
-  int err_code, err, err_lib, reason;
+  int err, err_lib, reason;
   GError *my_error = NULL;
   GTlsConnectionBaseStatus status;
-  SSL *ssl;
 
   priv = g_tls_connection_openssl_get_instance_private (openssl);
-
-  ssl = g_tls_connection_openssl_get_ssl (openssl);
-
-  err_code = SSL_get_error (ssl, ret);
 
   status = g_tls_connection_base_pop_io (tls, direction, ret > 0, &my_error);
 
@@ -274,7 +270,7 @@ perform_openssl_io (GTlsConnectionOpenssl  *openssl,
   GTlsConnectionOpensslPrivate *priv;
   SSL *ssl;
   gint64 deadline;
-  int ret;
+  int ret, err_code;
 
   tls = G_TLS_CONNECTION_BASE (openssl);
   priv = g_tls_connection_openssl_get_instance_private (openssl);
@@ -302,8 +298,9 @@ perform_openssl_io (GTlsConnectionOpenssl  *openssl,
        */
       ERR_clear_error ();
       ret = perform_func (ssl, perform_data);
+      err_code = SSL_get_error (ssl, ret);
 
-      switch (SSL_get_error (ssl, ret))
+      switch (err_code)
         {
           case SSL_ERROR_WANT_READ:
             io_needed = G_IO_IN;
@@ -316,7 +313,7 @@ perform_openssl_io (GTlsConnectionOpenssl  *openssl,
             break;
         }
 
-      status = end_openssl_io (openssl, direction, ret, TRUE, error, err_prefix);
+      status = end_openssl_io (openssl, direction, ret, err_code, TRUE, error, err_prefix);
 
       if (status != G_TLS_CONNECTION_BASE_TRY_AGAIN)
         break;
