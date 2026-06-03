@@ -236,6 +236,7 @@ end_openssl_io (GTlsConnectionOpenssl  *openssl,
       if (!g_tls_connection_get_require_close_notify (G_TLS_CONNECTION (openssl)))
         {
           status = G_TLS_CONNECTION_BASE_OK;
+          g_clear_error (error);
           goto out;
         }
 
