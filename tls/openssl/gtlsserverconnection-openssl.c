@@ -200,8 +200,10 @@ ssl_set_certificate (SSL              *ssl,
   if (SSL_clear_chain_certs (ssl) == 0)
     {
       ERR_error_string_n (ERR_get_error (), error_buffer, sizeof (error_buffer));
-      g_warning ("There was a problem clearing the chain certificates: %s",
-                 error_buffer);
+      g_set_error (error, G_TLS_ERROR, G_TLS_ERROR_BAD_CERTIFICATE,
+                   _("There was a problem clearing the chain certificates: %s"),
+                   error_buffer);
+      return FALSE;
     }
 
   /* Add all the issuers to create the full certificate chain */
@@ -219,8 +221,10 @@ ssl_set_certificate (SSL              *ssl,
       if (SSL_add1_chain_cert (ssl, issuer_x) == 0)
         {
           ERR_error_string_n (ERR_get_error (), error_buffer, sizeof (error_buffer));
-          g_warning ("There was a problem adding the chain certificate: %s",
-                     error_buffer);
+          g_set_error (error, G_TLS_ERROR, G_TLS_ERROR_BAD_CERTIFICATE,
+                       _("There was a problem adding the chain certificate: %s"),
+                       error_buffer);
+          return FALSE;
         }
     }
 
