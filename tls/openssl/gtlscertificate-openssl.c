@@ -239,6 +239,8 @@ maybe_import_pkcs12 (GTlsCertificateOpenssl *openssl)
   if (!openssl->pkcs12_data)
     return;
 
+  ERR_clear_error ();
+
   bio = BIO_new (BIO_s_mem ());
   if (!bio)
     goto import_failed;
@@ -526,6 +528,8 @@ g_tls_certificate_openssl_set_property (GObject      *object,
       if (!bytes)
         break;
       CRITICAL_IF_CERTIFICATE_INITIALIZED ("certificate");
+      ERR_clear_error ();
+
       /* see that we cannot use bytes->data directly since it will move the pointer */
       data = bytes->data;
       openssl->cert = d2i_X509 (NULL, (const unsigned char **)&data, bytes->len);
@@ -547,6 +551,8 @@ g_tls_certificate_openssl_set_property (GObject      *object,
       if (!string)
         break;
       CRITICAL_IF_CERTIFICATE_INITIALIZED ("certificate-pem");
+
+      ERR_clear_error ();
       bio = BIO_new_mem_buf ((gpointer)string, -1);
       if (bio)
         {
@@ -571,6 +577,7 @@ g_tls_certificate_openssl_set_property (GObject      *object,
         break;
       CRITICAL_IF_KEY_INITIALIZED ("private-key");
 
+      ERR_clear_error ();
       bio = BIO_new_mem_buf (bytes->data, bytes->len);
       if (bio)
         {
@@ -595,6 +602,7 @@ g_tls_certificate_openssl_set_property (GObject      *object,
         break;
       CRITICAL_IF_KEY_INITIALIZED ("private-key-pem");
 
+      ERR_clear_error ();
       bio = BIO_new_mem_buf ((gpointer)string, -1);
       if (bio)
         {

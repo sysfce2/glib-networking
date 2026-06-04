@@ -376,6 +376,7 @@ static gboolean
 populate_store (X509_STORE  *store,
                 GError     **error)
 {
+  ERR_clear_error ();
   if (!X509_STORE_set_default_paths (store))
     {
       char error_buffer[256];

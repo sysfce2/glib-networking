@@ -173,6 +173,8 @@ ssl_set_certificate (SSL              *ssl,
       return FALSE;
     }
 
+  ERR_clear_error ();
+
   /* Note, order is important. If a certificate has been set previously,
    * OpenSSL requires that the new certificate is set _before_ the new
    * private key is set. */
@@ -277,6 +279,7 @@ set_cipher_list (GTlsServerConnectionOpenssl  *server,
   cipher_list = g_getenv ("G_TLS_OPENSSL_CIPHER_LIST");
   if (cipher_list)
     {
+      ERR_clear_error ();
       if (!SSL_CTX_set_cipher_list (server->ssl_ctx, cipher_list))
         {
           char error_buffer[256];
@@ -304,6 +307,7 @@ set_max_protocol (GTlsServerConnectionOpenssl  *server,
 
       if (version > 0 && version < G_MAXINT)
         {
+          ERR_clear_error ();
           if (!SSL_CTX_set_max_proto_version (server->ssl_ctx, (int)version))
             {
               char error_buffer[256];
@@ -353,6 +357,8 @@ g_tls_server_connection_openssl_initable_init (GInitable       *initable,
   long options;
   char error_buffer[256];
 
+  ERR_clear_error ();
+
   server->session = SSL_SESSION_new ();
 
   server->ssl_ctx = SSL_CTX_new (g_tls_connection_base_is_dtls (G_TLS_CONNECTION_BASE (server))
@@ -391,6 +397,7 @@ g_tls_server_connection_openssl_initable_init (GInitable       *initable,
 
   cert = g_tls_connection_get_certificate (G_TLS_CONNECTION (initable));
 
+  ERR_clear_error ();
   server->ssl = SSL_new (server->ssl_ctx);
   if (!server->ssl)
     {

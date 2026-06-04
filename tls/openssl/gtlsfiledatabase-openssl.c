@@ -448,6 +448,7 @@ g_tls_file_database_openssl_populate_trust_list (GTlsDatabaseOpenssl  *self,
   GHashTable *subjects, *issuers, *complete, *certs_by_handle;
   gboolean result;
 
+  ERR_clear_error ();
   if (!X509_STORE_load_locations (store, file_database->anchor_filename, NULL))
     {
       char error_buffer[256];
