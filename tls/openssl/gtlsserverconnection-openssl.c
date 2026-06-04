@@ -360,6 +360,14 @@ g_tls_server_connection_openssl_initable_init (GInitable       *initable,
   ERR_clear_error ();
 
   server->session = SSL_SESSION_new ();
+  if (!server->session)
+    {
+      ERR_error_string_n (ERR_get_error (), error_buffer, sizeof (error_buffer));
+      g_set_error (error, G_TLS_ERROR, G_TLS_ERROR_MISC,
+                   _("Could not create TLS session: %s"),
+                   error_buffer);
+      return FALSE;
+    }
 
   server->ssl_ctx = SSL_CTX_new (g_tls_connection_base_is_dtls (G_TLS_CONNECTION_BASE (server))
                                  ? DTLS_server_method ()

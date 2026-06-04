@@ -430,6 +430,14 @@ g_tls_client_connection_openssl_initable_init (GInitable       *initable,
   if (!client->session)
     {
       client->session = SSL_SESSION_new ();
+      if (!client->session)
+        {
+          ERR_error_string_n (ERR_get_error (), error_buffer, sizeof (error_buffer));
+          g_set_error (error, G_TLS_ERROR, G_TLS_ERROR_MISC,
+                       _("Could not create TLS session: %s"),
+                       error_buffer);
+          return FALSE;
+        }
     }
   else
     {
