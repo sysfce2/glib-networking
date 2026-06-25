@@ -1,3 +1,53 @@
+2.90.alpha - June 25, 2026
+==========================
+
+* Bugs fixed:
+  - #222 test fails with openssl 3.4.x (Michael Catanzaro)
+  - #226 (CVE-2025-60018) (#YWH-PGM9867-106) Out of Bond Reads on glib-
+    networking through tls/openssl/gtlscertificate-openssl.c via
+    "g_tls_certificate_openssl_get_property()" due to Incorrect BIO_write Return
+    Value Validation in Certificate PEM Export (Michael Catanzaro)
+  - #228 (CVE-2026-2574) (#YWH-PGM9867-150) OOB Read on glib-networking through
+    tls/openssl/gtlsclientconnection-openssl.c via
+    g_tls_client_connection_openssl_get_property() (Michael Catanzaro)
+  - #231 (CVE-2026-10028) (#YWH-PGM9867-278) Infinite loop in certification path
+    building (Michael Catanzaro)
+  - !261 meson: Introduce option for enable/disable tests (Leonid Zaburunov)
+  - !263 openssl: check return value of g_tls_bio_alloc() and BIO_new() (Michael
+    Catanzaro)
+  - !265 openssl: delete support for OCSP stapling (Michael Catanzaro)
+  - !268 Fix file database and PKCS11 test failures and update CI! (Michael
+    Catanzaro)
+  - !270 Fix miscellaneous safety issues reported by bug hunters (Michael
+    Catanzaro)
+  - !271 Delete gtlshttp (Michael Catanzaro)
+  - !272 Fix connection test reusing a GError (Michael Catanzaro)
+  - !273 openssl: fix error code confusion (Michael Catanzaro)
+  - !274 ci: add catch for reporting stack traces (Michael Catanzaro)
+  - !277 Require OpenSSL 1.1.1 or newer (Michael Catanzaro)
+  - !280 Some fixes found with kiro (Ignacio Casal Quinteiro)
+  - !281 Fix various memory leaks (Michael Catanzaro)
+  - !283 openssl: refactor error handling code (Michael Catanzaro)
+  - !284 openssl: use ERR_clear_error() all over the place (Michael Catanzaro)
+  - !285 gnutls: always notify accepted-cas property after handshake (Michael
+    Catanzaro)
+
+* Translation updates:
+  - Arabic (Ahmed Najmawi)
+  - Basque (Asier Saratsua Garmendia)
+  - Belarusian (Vasil Pupkin)
+  - Cornish (Flynn Peck)
+  - Esperanto (Kristjan SCHMIDT)
+  - Greek, Modern (1453-) (Efstathios Iosifidis)
+  - Japanese (Takayuki Kusano)
+  - Lao (Saikeo Kavhanxay)
+  - Romanian (Antonio Marin)
+  - Slovak (Jose Riha)
+  - Slovenian (Martin)
+  - Thai (Aefgh Threenine)
+  - Uighur (Abduqadir Abliz)
+  - Uzbek (Baxrom Raxmatov)
+
 2.80.1 - January 8, 2025
 ========================
 
